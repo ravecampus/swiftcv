@@ -1,0 +1,48 @@
+/* line 1, ../sass/sub_header.scss */
+.sub-header {
+  padding: 4px;
+  background: #d0d0d0;
+  margin-bottom: 10px;
+}
+
+/* line 6, ../sass/sub_header.scss */
+.sub-header > a {
+  margin-left: 80px;
+  font-size: 50px;
+  text-decoration: none;
+}
+/* line 10, ../sass/sub_header.scss */
+.sub-header > a:hover {
+  color: #3dbebf;
+}
+
+/* line 14, ../sass/sub_header.scss */
+.tb-div {
+  margin-top: 30px;
+}
+
+/* line 18, ../sass/sub_header.scss */
+.head-tb {
+  background: #d0d0d0;
+}
+
+/* line 22, ../sass/sub_header.scss */
+.tb-options {
+  float: right;
+}
+
+/* line 26, ../sass/sub_header.scss */
+.sub-tb {
+  background: #f9f9f9;
+}
+
+/* line 30, ../sass/sub_header.scss */
+.tb-line {
+  border: 2px solid #ddd;
+}
+
+/* line 34, ../sass/sub_header.scss */
+.btn-tb {
+  float: right;
+  margin-left: 10px;
+}

@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top menu-cv">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand brand-cv" href="">Swiftkind</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+       
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="">{{ user.get_short_name|upper }}</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+              <li><a href="{% url 'member' %}">Login / Signup</a></li>
+            {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+   
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- <script src="{% static 'js/tinymce.min.js' %}"></script> -->
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="{% static 'js/tinymce.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'custom-js/sign_up.js' %}"></script>
+    <script src="{% static 'custom-js/work.js' %}"></script>
+    <script src="{% static 'custom-js/form.js' %}"></script>
+    <script src="{% static 'custom-js/photo.js' %}"></script>
+    <script src="{% static 'custom-js/pdf.js' %}"></script>
+    <script src="{% static 'custom-js/edu.js' %}"></script>
+    <script src="{% static 'custom-js/special_section.js' %}"></script>
+
+</body>
+</html>

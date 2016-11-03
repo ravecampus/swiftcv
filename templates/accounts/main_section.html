@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="container">
+<h1>Your CVs</h1>
+<button type="button" data-toggle="modal" data-target=".cv-new" class="btn btn-cv">Create a new CV</button>
+  <div class="table-responsive tb-div">
+  {% if user.section.all %}
+  <table class="table tb-line">
+    <thead>
+      <tr class="head-tb">
+        <th>Name</th>
+        <th>Date created</th>
+        <th class="tb-options">Options</th>
+      </tr>
+    </thead>
+    <tbody class="sub-tb">
+     {% for section in user.section.all %}
+      <tr>
+        <td><a href="{% url 'section_id' section.id %}">{{ section.name }}</a></td>
+        <td>{{ section.date_created }}</td>
+        <td>
+           <button type="button" class="btn btn-cv btn-right-long">Share</button>
+           <button type="button" data-name="{{ section.name }}" data-id="{{ section.id }}" class="btn btn-cv btn-tb btn-rename-cv ">Rename</button>
+           <button type="button" data-target=".cv-delete"  data-id="{{ section.id }}" data-toggle="modal" class="btn btn-cv btn-tb btn-delete-sec" >Delete</button>
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  No more section left.....
+  {% endif %}
+  </div>
+
+<div class="modal fade cv-new" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm ">
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Swiftkind CV</h4>
+      </div>
+       <div class="modal-body">
+        <form id="form-section">
+         {% csrf_token %}
+        <div class="form-group">
+            <label>Enter a name for your CV</label>
+            <p class="error"></p>
+            <input type="text" name="name" id="sec_name" class="form-control text-cv">
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-cv" id="btn-section">Ok</button>
+        <button type="button" class="btn btn-secondary btn-cv" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade cv-rename" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm ">
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Swiftkind CV</h4>
+      </div>
+       <div class="modal-body">
+        <form id="form-rename">
+         {% csrf_token %}
+        <div class="form-group">
+            <label>Rename for your CV</label>
+            <p class="error-rename-section"></p>
+            <input type="text" id="re_name" name="name" class="form-control text-cv">
+            <input type="hidden" name="section-id">
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-cv" id="btn_rename">Ok</button>
+        <button type="button" class="btn btn-secondary btn-cv" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade cv-delete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm ">
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Do you want delete?</h4>
+      </div>
+       <div class="modal-body">
+        <form id="form-section">
+         {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <input type="hidden" name="section-id">
+                <button type="button" class="btn btn-danger btn-block btn-cv"  id="btn-delete">Yes</button>
+             </div>   
+             <div class="col-md-6"> 
+                <button type="button" class="btn btn-secondary btn-block btn-cv" data-dismiss="modal">No</button>
+             </div>
+         </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

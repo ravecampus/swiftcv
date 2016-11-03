@@ -1,0 +1,37 @@
+.sub-header{
+    padding: 4px;
+    background: #d0d0d0;
+    margin-bottom: 10px;
+}
+.sub-header > a{
+    margin-left: 80px;
+    font-size: 50px;
+    text-decoration: none;
+    &:hover{
+    color:#3dbebf;
+    }
+}
+.tb-div{
+    margin-top: 30px;
+}
+
+.head-tb{
+    background: #d0d0d0;
+}
+
+.tb-options{
+    float: right;
+}
+
+.sub-tb{
+    background: #f9f9f9;
+}
+
+.tb-line{
+    border: 2px solid #ddd;
+}
+
+.btn-tb{
+    float: right;
+    margin-left: 10px;
+}

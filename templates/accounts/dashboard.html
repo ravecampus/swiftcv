@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load staticfiles photo %}
+{% load widget_tweaks %}
+{% block content %}
+{% include 'includes/header.html' %}
+   <div class="container">  
+    <div class="row">
+    <div class="pull-left">
+      <h2 class="section-name">{{ section }}</h2>
+    </div>
+     <div class="pull-right">
+      <div class="form-group">
+      <p class="save btn btn-cv btn-right-long"></p>
+       <button type="button" class="btn btn-cv btn-right-long">Help</button>
+  <!--      <button type="button" class="btn btn-cv btn-right">Quick Preview</button> -->
+       <button type="button" class="btn btn-cv btn-right" id="btn_cvform">Save</button>
+       <button type="button" class="btn btn-cv btn-right">Save & Download</button>
+      </div>
+     </div>
+    </div> 
+
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked " id="sortable">
+        <li class="active"><a  data-toggle="tab" href="#home">Basic information</a></li>
+        <li><a data-toggle="tab" href="#menu1">Work experience</a></li>
+        <li><a data-toggle="tab" href="#menu2">Qualifications</a></li>
+        <li><a data-toggle="tab" href="#menu3">Education</a></li>
+        <li><a data-toggle="tab" href="#menu4">Interests</a></li>
+        <li><a data-toggle="tab" href="#menu5">References</a>
+        <li><a data-toggle="tab" href="#menu6">Portfolio</a></li>
+        {% for nav in special %}
+        <li><a data-toggle="tab" href="#{{ nav.id }}">{{ nav.name|title }}</a></li>
+        {% endfor %}
+      </ul>
+    <button type="button" class="btn btn-cv new-section" data-id="{{ section.id }}" id="btn-special-section">Add a new section</button>
+    </div>
+    <div class="col-md-9 con-bg">
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+          <h3>Basic Information</h3>
+          <hr class="line-style">
+          <form id="cvform" enctype="multipart/form-data">
+          {% csrf_token %}
+             <div class="col-md-12">
+             <div class="col-md-6">
+             <input type="hidden" name="section-id" value="{{ section.id }}">
+            <input type="hidden" name="name" value="{{ section.name }}">
+                  <div class="form-group">
+                    <label>Full name</label>
+                   <!--  <input type="text" name="full_name" class="form-control text-cv"> -->
+                    {{ form.full_name|attr:"class:form-control text-cv" }}
+                  </div>
+                 <div class="form-group">
+                    <label>Phone number</label>
+                  <!--   <input type="text" name="phone" class="form-control text-cv"> -->
+                    {{ form.phone|attr:"class:form-control text-cv" }}
+                  </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label>E-mail address</label>
+                <!--     <input type="text" name="email_cv" class="form-control text-cv"> -->
+                     {{ form.email_cv|attr:"class:form-control text-cv" }}
+                </div>
+                 <div class="form-group">
+                    <label>Websites</label>
+                   <!--  <input type="text" name="website" class="form-control text-cv"> -->
+                    {{ form.website|attr:"class:form-control text-cv" }}
+                  </div>
+              </div>
+              </div>
+              <hr class="line-style">
+               <div class="col-md-12">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Address line 1</label>
+                       <!--  <input type="text" name="address_l1" class="form-control text-cv"> -->
+                        {{ form.address_l1|attr:"class:form-control text-cv" }}
+                      </div>
+                     <div class="form-group">
+                        <label>Address line 3</label>
+                        <input type="text" name="address_l3" class="form-control text-cv">
+                       <!--  {{ form.address_l3|attr:"class:form-control text-cv" }} -->
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Address line 2</label>
+                       <!--  <input type="text" name="address_l2" class="form-control text-cv"> -->
+                        {{ form.address_l2|attr:"class:form-control text-cv" }}
+                      </div>
+                  </div>
+               </div>
+               <hr class="line-style">
+               <div class="col-md-12">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                      {% if section.photo %}
+                        <img src="{{ section.photo.url }}" class="profile-pic" width="20px" height="25px">
+                      {% else %}
+                       <img src="" class="profile-pic" width="20px" height="25px">
+                      {% endif %}
+                      </div>
+                      <div class="form-group">
+                        <labe>Photo</labe>
+                        <input type="file" name="photo" id="photo" accept="image/*">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                       <button type="button" class="btn btn-cv" id="btn-upload">upload</button>
+                       <button type="button" id="photo-remove" class="btn btn-cv">remove</button>
+                      </div>
+                  </div>
+                </div>
+        </div>
+        <div id="menu1" class="tab-pane fade">
+        <h3>Work experience</h3>
+            <hr class="line-style">
+         <div id="work_set">
+       
+         </div>
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-cv" id="btn_work">Add entry</button>
+            </div>
+        </div>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+          <h3>Qualifications</h3>
+          <hr class="line-style">
+          <!-- <textarea name="detail_qualification" ></textarea> -->
+          {{ form.qualification|attr:"class:form-control text-cv" }}
+        </div>
+        <div id="menu3" class="tab-pane fade">
+          <h3>Education</h3>
+          <hr class="line-style">
+           <div id="education_set">
+
+         <!--  {% for education in  educ %}
+            <div id="education" data-edu-id="{{ education.id }}">
+                <div class="col-md-12">
+                   <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Course name</label>
+                          <input type="text" name="course" value="{{ education.course }}" class="form-control text-cv">
+                        </div>
+                       <div class="form-group">
+                          <label>Start date</label>
+                          <input type="text" name="start_date_e" value="{{ education.start }}" class="form-control text-cv">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <label>Institution name</label>
+                          <input type="text" name="institution" value="{{ education.institution }}" class="form-control text-cv">
+                        </div>
+                       <div class="form-group">
+                          <label>End date</label>
+                          <input type="text" name="end_date_e" value="{{ education.end }}" class="form-control text-cv">
+                        </div>
+                    </div>
+                 </div>
+                 <hr class="line-style">
+                 <div class="col-md-12">
+                     <div class="col-md-12">
+                      <label>Other Information</label>
+                      <textarea name="information" class="form-control text-cv">{{ education.other_information }}</textarea>
+                      <p>Optional details such as course description, marks etc.</p>
+                     </div>
+                </div>
+                <button type="button" class="btn btn-cv btn-delete">Delete</button>
+                <hr class="line-style">
+            </div>
+          {% endfor %} -->
+       </div>
+          
+        <div class="col-md-12">
+             <div class="col-md-12">
+              <button type="button" id="btn_education" class="btn btn-cv">Add entry</button>
+             </div>
+        </div>
+        </div>
+        <div id="menu4" class="tab-pane fade">
+          <h3>Interests</h3>
+          <hr class="line-style">
+       <!--    <textarea name="interest"></textarea> -->
+           {{ form.interest|attr:"class:form-control text-cv" }}
+        </div>
+        <div id="menu5" class="tab-pane fade">
+          <h3>References</h3>
+          <hr class="line-style">
+          <!-- <textarea name="reference" ></textarea> -->
+           {{ form.reference|attr:"class:form-control text-cv" }}
+
+        </div>
+        <div id="menu6" class="tab-pane fade">
+          <h3>Portfolio</h3>
+          <hr class="line-style">
+          <!-- <textarea name="portfolio"></textarea> -->
+           {{ form.portfolio|attr:"class:form-control text-cv" }}
+        </div>
+        {% for tab in special %}
+        <div id="{{ tab.id }}" class="tab-pane fade">
+          <h3>{{ tab.name|title }}</h3><button type="button" class="btn btn-cv link-edit-section" data-name="{{ tab.name }}" data-sp-id="{{ tab.id }}" >Edit</button>
+          <hr class="line-style">
+          <div class="row">
+            <div class="col-md-12">
+             
+             <!-- {{ form.portfolio|attr:"class:form-control text-cv" }} -->
+             <div class="form-group">
+               <textarea name="content" class="form-control text-cv " cols="40" rows="10"></textarea>
+               <button type="button" data-sp-id="{{ tab.id }}" data-sec-id="{{ section.id }}" class="btn btn-cv btn-delete-special">Delete</button>
+             </div>
+             </div>
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+   </form>
+  </div>
+  </div>
+
+<div class="modal fade cv-special-section" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm ">
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Do you want to add Special Section?</h4>
+      </div>
+       <div class="modal-body">
+        <form id="form-special-section">
+         {% csrf_token %}
+        <div class="row"> 
+             <div class="col-md-12"> 
+               <input type="hidden" name="section_id">
+               <input type="text" name="name" class="form-control text-cv" value="Special section" placeholder="">
+             </div>
+         </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-cv" id="btn-add-special-section">Ok</button>
+        <button type="button" class="btn btn-secondary btn-cv" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade special-section-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm ">
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Do you want delete?</h4>
+      </div>
+       <div class="modal-body">
+        <form id="form-del-sp">
+         {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <input type="hidden" name="special_id">
+                <input type="hidden" name="section_id">
+                <button type="button" class="btn btn-danger btn-block btn-cv"  id="btn-delete-sp">Yes</button>
+             </div>   
+             <div class="col-md-6"> 
+                <button type="button" class="btn btn-secondary btn-block btn-cv" data-dismiss="modal">No</button>
+             </div>
+         </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade edit-section" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm ">
+    <div class="modal-content">
+       <div class="modal-body">
+        <form id="form-edit-section">
+         {% csrf_token %}
+        <div class="row"> 
+             <div class="col-md-12"> 
+               <input type="hidden" name="sp-id">
+               <input type="text" id="sp-text" name="name" class="form-control text-cv" value="" placeholder="">
+             </div>
+         </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-cv" id="btn-edit-section">Change Section Name</button>
+        <button type="button" class="btn btn-secondary btn-cv" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

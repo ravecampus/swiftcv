@@ -1,0 +1,36 @@
+ {% for education in  educ %}
+  <div id="education" data-edu-id="{{ education.id }}">
+      <div class="col-md-12">
+         <div class="col-md-6">
+              <div class="form-group">
+                <label>Course name</label>
+                <input type="text" name="course" value="{{ education.course }}" class="form-control text-cv">
+              </div>
+             <div class="form-group">
+                <label>Start date</label>
+                <input type="text" name="start_date_e" value="{{ education.start }}" class="form-control text-cv">
+              </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>Institution name</label>
+                <input type="text" name="institution" value="{{ education.institution }}" class="form-control text-cv">
+              </div>
+             <div class="form-group">
+                <label>End date</label>
+                <input type="text" name="end_date_e" value="{{ education.end }}" class="form-control text-cv">
+              </div>
+          </div>
+       </div>
+       <hr class="line-style">
+       <div class="col-md-12">
+           <div class="col-md-12">
+            <label>Other Information</label>
+            <textarea name="information" class="form-control text-cv">{{ education.other_information }}</textarea>
+            <p>Optional details such as course description, marks etc.</p>
+           </div>
+      </div>
+      <button type="button" class="btn btn-cv btn-delete">Delete</button>
+      <hr class="line-style">
+  </div>
+{% endfor %}

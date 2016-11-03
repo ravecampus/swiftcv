@@ -1,0 +1,197 @@
+/* line 1, ../sass/_sidebar.scss */
+.nav-stacked {
+  background-color: #f7f7f7;
+}
+
+/* line 5, ../sass/_sidebar.scss */
+.con-bg {
+  border: 2px solid #f7f7f7;
+  height: auto;
+  padding: 10px;
+}
+
+/* line 11, ../sass/_sidebar.scss */
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #159394;
+}
+
+/* line 16, ../sass/_sidebar.scss */
+.nav-pills > li > a {
+  border-radius: 0;
+  padding: 5px 10px;
+}
+
+/* line 21, ../sass/_sidebar.scss */
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+/* line 26, ../sass/_sidebar.scss */
+a {
+  color: #159394;
+  text-decoration: none;
+}
+
+/* line 30, ../sass/_sidebar.scss */
+a:hover, a:focus {
+  color: #159394;
+}
+
+/* line 34, ../sass/_sidebar.scss */
+.text-cv {
+  border-radius: 0;
+  height: 28px;
+}
+
+/* line 39, ../sass/_sidebar.scss */
+.btn-cv {
+  border-radius: 0;
+}
+
+/* line 43, ../sass/_sidebar.scss */
+.form-bg {
+  background: #f7f7f7;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+/* line 49, ../sass/_sidebar.scss */
+.errd {
+  color: #d84f41;
+  padding: 5px;
+  background-color: #f7e9e8;
+}
+
+/* line 1, ../sass/_nabvar.scss */
+.menu-cv {
+  background-color: #159394;
+  border-color: #fff;
+  margin-bottom: 0px;
+  border: 0px solid transparent;
+}
+
+/* line 8, ../sass/_nabvar.scss */
+.navbar-default .brand-cv {
+  color: #fff;
+}
+
+/* line 13, ../sass/_nabvar.scss */
+.navbar-default .brand-cv:hover,
+.navbar-default .brand-cv:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+
+/* line 18, ../sass/_nabvar.scss */
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+/* line 23, ../sass/_nabvar.scss */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+
+/* line 28, ../sass/_nabvar.scss */
+.line-style {
+  border: .5px solid #f7f7f7;
+}
+
+/* line 32, ../sass/_nabvar.scss */
+.new-section {
+  margin-top: 30px;
+}
+
+/* line 35, ../sass/_nabvar.scss */
+.btn-right {
+  margin-right: 16px;
+}
+
+/* line 38, ../sass/_nabvar.scss */
+.btn-right-long {
+  margin-right: 25px;
+}
+
+/* line 41, ../sass/_nabvar.scss */
+.btn-delete {
+  margin-left: 30px;
+}
+
+/* line 44, ../sass/_nabvar.scss */
+.section-name {
+  margin-left: 15px;
+}
+
+/* line 48, ../sass/_nabvar.scss */
+.btn-delete-special {
+  margin-top: 25px;
+}
+
+/* line 51, ../sass/_nabvar.scss */
+.process {
+  background-color: #ffed89;
+}
+
+/* line 1, ../sass/_photo.scss */
+.profile-pic {
+  float: left;
+  margin-right: 15px;
+  width: 80px;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* line 1, ../sass/sub_header.scss */
+.sub-header {
+  padding: 4px;
+  background: #d0d0d0;
+  margin-bottom: 10px;
+}
+
+/* line 6, ../sass/sub_header.scss */
+.sub-header > a {
+  margin-left: 80px;
+  font-size: 50px;
+  text-decoration: none;
+}
+/* line 10, ../sass/sub_header.scss */
+.sub-header > a:hover {
+  color: #3dbebf;
+}
+
+/* line 14, ../sass/sub_header.scss */
+.tb-div {
+  margin-top: 30px;
+}
+
+/* line 18, ../sass/sub_header.scss */
+.head-tb {
+  background: #d0d0d0;
+}
+
+/* line 22, ../sass/sub_header.scss */
+.tb-options {
+  float: right;
+}
+
+/* line 26, ../sass/sub_header.scss */
+.sub-tb {
+  background: #f9f9f9;
+}
+
+/* line 30, ../sass/sub_header.scss */
+.tb-line {
+  border: 2px solid #ddd;
+}
+
+/* line 34, ../sass/sub_header.scss */
+.btn-tb {
+  float: right;
+  margin-left: 10px;
+}

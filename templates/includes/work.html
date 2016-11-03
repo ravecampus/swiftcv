@@ -1,0 +1,36 @@
+{% for work in works %}
+<div id="work" data-work-id="{{ work.id }}">
+  <div class="col-md-12">
+     <div class="col-md-6">
+          <div class="form-group">
+            <label>Job title</label>
+            <input type="text" name="job_title" value="{{ work.job }}" class="form-control text-cv">
+          </div>
+         <div class="form-group">
+            <label>Start date</label>
+            <input type="text" name="start_date_w" value="{{ work.start_date_work }}" class="form-control text-cv">
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+            <label>Company name</label>
+            <input type="text" name="company_name" value="{{ work.company }}" class="form-control text-cv">
+          </div>
+         <div class="form-group">
+            <label>End date</label>
+            <input type="text" name="end_date_w" value="{{ work.end_date_work }}" class="form-control text-cv">
+          </div>
+      </div>
+   </div>
+   <hr class="line-style">
+   <div class="col-md-12">
+       <div class="col-md-12">
+        <label>Other Information</label>
+        <textarea name="other_information_w" class="form-control text-cv"></textarea>
+        <p>Optional details such as job responsibilities, achievements etc.</p>
+       </div>
+</div> 
+  <button class="btn btn-cv btn-delete btn-work ">Delete</button>
+  <hr class="line-style">
+</div>
+{% endfor %}

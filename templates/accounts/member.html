@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">  
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-md-8 col-md-offset-2">
+            <form id=login-form class="form-bg">
+            <h3>Member login</h3>
+            {% csrf_token %}
+             <input type="hidden" name="form_id" value="login">
+                <p class="error_login"></p>
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="text" name="email" class="form-control text-cv" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Passsword</label>
+                    <input type="password" name="password" class="form-control text-cv" placeholder="">
+                </div>
+                <button class="btn btn-default btn-cv" type="button" id="btn-login"> Log in</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="col-md-10 col-md-offset-1">
+            <form id="form-signup" method="post" class="form-bg">
+            <h3>Not a member yet? Join now</h3>
+            {% csrf_token %}
+                <input type="hidden" name="form_id" value="signup">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <p class="error"></p>
+                    <input type="text" name="email" class="form-control text-cv" placeholder="">
+                    <p>No verification e-mail will be sent</p>
+                </div>
+                <div class="form-group">
+                    <label>Passsword</label>
+                    <p class="error"></p>
+                    <input type="password" name="password" class="form-control text-cv" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label>Confirm passsword</label>
+                    <p class="error"></p>
+                    <input type="password" name="confirm_password" class="form-control text-cv" placeholder="">
+                </div>
+                <button class="btn btn-default btn-cv" type="button" id="signup_btn">Signup</button>
+            </form>
+        </div>  
+    </div>
+</div>
+</div>
+{% endblock %}
